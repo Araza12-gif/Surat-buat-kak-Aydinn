@@ -1,2 +1,2 @@
-# Surat-buat-kak-Aydinn
-A little Dinosaurus
+# Surat-buat-Manda
+Purple Love
