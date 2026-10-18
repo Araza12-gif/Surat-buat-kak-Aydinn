@@ -2,73 +2,59 @@
 const openBtn = document.getElementById("openBtn");
 const envelope = document.getElementById("envelope");
 const letter = document.getElementById("letter");
-const extraMessage = document.getElementById("extraMessage");
+const secret = document.getElementById("secret");
 
-const anotherBtn = document.getElementById("anotherBtn");
-const secretQuote = document.getElementById("secretQuote");
+const secretBtn = document.getElementById("secretBtn");
+const secretText = document.getElementById("secretText");
 
-const secretMessages = [
-  "Istirahat boleh, menyerah jangan. Gelar sarjana itu sedang menunggu Kakak! 🎓💚",
+const messages = [
+  "Semoga setiap langkahmu di Mesir selalu ditemani kemudahan, orang-orang baik, dan ilmu yang bermanfaat. 💜",
 
-  "Satu revisi lagi, satu langkah lebih dekat menuju toga. Semangat, Kak! 🦖",
+  "Kalau suatu hari kamu merasa jauh dari semuanya, semoga kamu ingat bahwa ada banyak doa baik yang berjalan bersamamu. 🌙",
 
-  "Kakak nggak harus sempurna, cukup terus berusaha dan jangan berhenti percaya pada diri sendiri. 🌱",
+  "Aku mungkin akan merindukan kehadiranmu, tapi aku juga ingin melihatmu tumbuh dan berhasil meraih impianmu. 🪻",
 
-  "Semoga halaman skripsi segera selesai, revisi segera disetujui, dan senyum bahagia segera menghiasi hari Kakak. 🌷",
+  "Jangan lupa menjaga kesehatan, makan teratur, dan istirahat. Mengejar mimpi itu penting, tetapi dirimu juga berharga. 🤍",
 
-  "Kalau hari ini terasa berat, istirahatlah sebentar. Besok kita lanjutkan perjuangannya lagi. You got this! 💚",
+  "Semoga jarak tidak menghapus cerita baik yang pernah kita punya. Tetaplah menjadi kamu yang kukenal. ♡",
 
-  "Bayangkan hari ketika Kakak memakai toga dan berkata, 'Akhirnya semua perjuangan ini terbayar!' Keep going! 🎓",
+  "Pergilah untuk belajar, pulanglah membawa ilmu dan cerita. Semoga Allah selalu menjagamu, di mana pun kamu berada. 💜",
 
-  "Semoga Allah memudahkan setiap urusan Kakak, melancarkan proses skripsinya, dan memberikan hasil terbaik. Aamiin. 🤍",
-
-  "Dear Kak Adyinn.., jangan bandingkan prosesmu dengan orang lain. Setiap orang punya waktunya sendiri. Pelan-pelan, ya! 🍃"
+  "Ada pertemuan yang menjadi kenangan, ada jarak yang mengajarkan ketulusan, dan ada doa yang tetap tinggal meski seseorang pergi jauh."
 ];
 
 let lastIndex = -1;
 
-// Tombol untuk membuka surat
 openBtn.addEventListener("click", () => {
   envelope.classList.add("hidden");
   letter.classList.remove("hidden");
-  extraMessage.classList.remove("hidden");
+  secret.classList.remove("hidden");
 
-  letter.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
+  setTimeout(() => {
+    letter.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }, 100);
 });
 
-// Tombol untuk mengganti pesan rahasia
-anotherBtn.addEventListener("click", () => {
-  let randomIndex;
+secretBtn.addEventListener("click", () => {
+  let index;
 
   do {
-    randomIndex = Math.floor(
-      Math.random() * secretMessages.length
-    );
-  } while (
-    randomIndex === lastIndex &&
-    secretMessages.length > 1
-  );
+    index = Math.floor(Math.random() * messages.length);
+  } while (index === lastIndex && messages.length > 1);
 
-  lastIndex = randomIndex;
+  lastIndex = index;
+  secretText.textContent = messages[index];
 
-  secretQuote.textContent = secretMessages[randomIndex];
-
-  secretQuote.animate(
+  secretText.animate(
     [
-      {
-        opacity: 0,
-        transform: "translateY(8px)"
-      },
-      {
-        opacity: 1,
-        transform: "translateY(0)"
-      }
+      { opacity: 0, transform: "translateY(8px)" },
+      { opacity: 1, transform: "translateY(0)" }
     ],
     {
-      duration: 400,
+      duration: 450,
       easing: "ease-out"
     }
   );
